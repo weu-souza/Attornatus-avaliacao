@@ -1,22 +1,37 @@
 package Domain;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class Pessoa {
+@Entity
+public class Pessoa implements Serializable {
+   @javax.persistence.Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
     private String nome;
     private Date DataNascimento;
-    private List<Endereco> enderecoPrincipal = new ArrayList<>();
-    private List<Endereco> outrosEnderecos = new ArrayList<>();
+    @OneToMany(mappedBy = "pessoa")
+    private List<Endereco>enderecoPrincipal = new ArrayList<>();
+
 
     public Pessoa(Integer id, String nome, Date dataNascimento) {
         Id = id;
         this.nome = nome;
         DataNascimento = dataNascimento;
     }
+
+    public Pessoa() {
+
+    }
+
 
     public Integer getId() {
         return Id;
@@ -49,15 +64,6 @@ public class Pessoa {
     public void setEnderecoPrincipal(List<Endereco> enderecoPrincipal) {
         this.enderecoPrincipal = enderecoPrincipal;
     }
-
-    public List<Endereco> getOutrosEnderecos() {
-        return outrosEnderecos;
-    }
-
-    public void setOutrosEnderecos(List<Endereco> outrosEnderecos) {
-        this.outrosEnderecos = outrosEnderecos;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,4 +76,8 @@ public class Pessoa {
     public int hashCode() {
         return Objects.hash(Id);
     }
+
+
+
+
 }

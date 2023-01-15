@@ -1,22 +1,33 @@
 package Domain;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
-
-public class Endereco {
+@Entity
+public class Endereco implements Serializable {
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String logradouro;
     private Integer cep;
     private Integer num;
     private String cidade;
+@ManyToOne
+@JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
 
-    public Endereco(Integer id, String logradouro, Integer cep, Integer num, String cidade) {
+    public Endereco(Integer id, String logradouro, Integer cep, Integer num, String cidade, Pessoa pessoa) {
         this.id = id;
         this.logradouro = logradouro;
         this.cep = cep;
         this.num = num;
         this.cidade = cidade;
+        this.pessoa = pessoa;
     }
 
+    public Endereco() {
+
+    }
     public Integer getId() {
         return id;
     }
