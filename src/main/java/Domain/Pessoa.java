@@ -19,7 +19,7 @@ public class Pessoa implements Serializable {
     private String nome;
     private Date DataNascimento;
     @OneToMany(mappedBy = "pessoa")
-    private List<Endereco>enderecoPrincipal = new ArrayList<>();
+    private List<Endereco>endereco = new ArrayList<>();
 
 
     public Pessoa(Integer id, String nome, Date dataNascimento) {
@@ -58,11 +58,11 @@ public class Pessoa implements Serializable {
     }
 
     public List<Endereco> getEnderecoPrincipal() {
-        return enderecoPrincipal;
+        return endereco;
     }
 
-    public void setEnderecoPrincipal(List<Endereco> enderecoPrincipal) {
-        this.enderecoPrincipal = enderecoPrincipal;
+    public void setEnderecoPrincipal(List<Endereco> endereco) {
+        this.endereco = endereco;
     }
     @Override
     public boolean equals(Object o) {
