@@ -1,5 +1,6 @@
 package com.weusouza.service;
 
+import com.weusouza.DTO.PessoaDto;
 import com.weusouza.domain.Pessoa;
 import com.weusouza.repositories.PessoaRepository;
 import com.weusouza.service.exeptions.ObjectNotFoundExeption;
@@ -32,6 +33,13 @@ public class PessoaService {
 
     public Pessoa create(Pessoa obj){
     obj.setId(null);
+    return repository.save(obj);
+    }
+
+    public Pessoa update(Integer id, PessoaDto objDto) {
+    Pessoa obj = findById(id);
+    obj.setNome(objDto.getNome());
+    obj.setDataNascimento(objDto.getDataNascimento());
     return repository.save(obj);
     }
 }

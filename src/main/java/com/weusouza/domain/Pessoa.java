@@ -21,6 +21,7 @@ public class Pessoa  {
     private List<Endereco>endereco = new ArrayList<>();
 
 
+
     public Pessoa(Integer id, String nome, LocalDate dataNascimento) {
         Id = id;
         this.nome = nome;
@@ -30,7 +31,6 @@ public class Pessoa  {
     public Pessoa() {
 
     }
-
 
     public Integer getId() {
         return Id;
@@ -56,11 +56,11 @@ public class Pessoa  {
         DataNascimento = dataNascimento;
     }
 
-    public List<Endereco> getEnderecoPrincipal() {
+    public List<Endereco> getEndereco() {
         return endereco;
     }
 
-    public void setEnderecoPrincipal(List<Endereco> endereco) {
+    public void setEndereco(List<Endereco> endereco) {
         this.endereco = endereco;
     }
     @Override

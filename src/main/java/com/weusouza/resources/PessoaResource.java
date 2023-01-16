@@ -20,27 +20,35 @@ public class PessoaResource {
     private final PessoaService service;
 
 
-@Autowired
+    @Autowired
     public PessoaResource(PessoaService service) {
         this.service = service;
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Pessoa> findById(@PathVariable  Integer id) {
+    public ResponseEntity<Pessoa> findById(@PathVariable Integer id) {
         Pessoa obj = service.findById(id);
         return ResponseEntity.ok(obj);
     }
-@GetMapping
-    public ResponseEntity<List<PessoaDto>> findAll(){
-    List<Pessoa> list = service.findAll();
-    List<PessoaDto> listDto = list.stream().map(obj -> new PessoaDto(obj)).collect(Collectors.toList());
-    return ResponseEntity.ok().body(listDto);
+
+    @GetMapping
+    public ResponseEntity<List<PessoaDto>> findAll() {
+        List<Pessoa> list = service.findAll();
+        List<PessoaDto> listDto = list.stream().map(obj -> new PessoaDto(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
-@PostMapping
-    public ResponseEntity<Pessoa> create(@RequestBody Pessoa obj){
-    obj = service.create(obj);
-    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-    return ResponseEntity.created(uri).build();
+
+    @PostMapping
+    public ResponseEntity<Pessoa> create(@RequestBody Pessoa obj) {
+        obj = service.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<PessoaDto> update(@PathVariable Integer id, @RequestBody PessoaDto objDto) {
+        Pessoa newObj = service.update(id, objDto);
+        return ResponseEntity.ok().body(new PessoaDto(newObj));
     }
 
 }
