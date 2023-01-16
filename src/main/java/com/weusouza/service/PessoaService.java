@@ -29,4 +29,9 @@ public class PessoaService {
     public List<Pessoa> findAll(){
     return repository.findAll();
     }
+
+    public Pessoa create(Pessoa obj){
+    obj.setId(null);
+    return repository.save(obj);
+    }
 }
