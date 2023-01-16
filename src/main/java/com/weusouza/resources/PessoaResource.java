@@ -50,5 +50,9 @@ public class PessoaResource {
         Pessoa newObj = service.update(id, objDto);
         return ResponseEntity.ok().body(new PessoaDto(newObj));
     }
-
+@DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id){
+service.delete(id);
+return ResponseEntity.noContent().build();
+    }
 }

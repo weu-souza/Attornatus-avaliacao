@@ -23,6 +23,7 @@ public class DBService {
         Pessoa p1 = new Pessoa(null,"weu", LocalDate.of(1997, 11, 27));
         Pessoa p2 = new Pessoa(null,"sid", LocalDate.of(1999, 12, 28));
         Pessoa p3 = new Pessoa(null,"maria", LocalDate.of(1998, 10, 29));
+        Pessoa p4 = new Pessoa(null,"jose", LocalDate.of(1998, 11, 20));
         Endereco e1 = new Endereco(null,"rua8",72815460,12,"brasilia",p1);
         Endereco e2 = new Endereco(null,"rua9",72815470,13,"brasilia",p2);
         Endereco e3 = new Endereco(null,"rua10",72815459,15,"brasilia",p3);
@@ -37,7 +38,7 @@ public class DBService {
 
 
 
-        this.pessoaRepository.saveAll(Arrays.asList(p1,p2,p3));
+        this.pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
         this.enderecoRepository.saveAll(Arrays.asList(e1,e2,e3,e4,e5,e6));
 
     }

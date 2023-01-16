@@ -42,4 +42,9 @@ public class PessoaService {
     obj.setDataNascimento(objDto.getDataNascimento());
     return repository.save(obj);
     }
+
+    public void delete(Integer id) {
+    findById(id);
+    repository.deleteById(id);
+    }
 }
