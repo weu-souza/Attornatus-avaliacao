@@ -1,4 +1,4 @@
-package Domain;
+package com.weusouza.Domain;
 
 
 import javax.persistence.Entity;
@@ -6,8 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,12 +17,12 @@ public class Pessoa implements Serializable {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
     private String nome;
-    private Date DataNascimento;
+    private LocalDate DataNascimento;
     @OneToMany(mappedBy = "pessoa")
     private List<Endereco>endereco = new ArrayList<>();
 
 
-    public Pessoa(Integer id, String nome, Date dataNascimento) {
+    public Pessoa(Integer id, String nome, LocalDate dataNascimento) {
         Id = id;
         this.nome = nome;
         DataNascimento = dataNascimento;
@@ -49,11 +49,11 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return DataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         DataNascimento = dataNascimento;
     }
 
