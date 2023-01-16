@@ -1,10 +1,9 @@
 package com.weusouza.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 @Entity
-public class Endereco implements Serializable {
+public class Endereco {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
