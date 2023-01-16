@@ -1,6 +1,6 @@
-package com.weusouza.Repositories;
+package com.weusouza.repositories;
 
-import com.weusouza.Domain.Endereco;
+import com.weusouza.domain.Endereco;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

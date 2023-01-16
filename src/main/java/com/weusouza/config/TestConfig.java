@@ -1,4 +1,4 @@
-package com.weusouza.Config;
+package com.weusouza.config;
 
 import com.weusouza.service.DBService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,11 @@ import org.springframework.context.annotation.Profile;
 @Profile("test")
 public class TestConfig {
 
-    @Autowired
-    private DBService dbService;
+    private final DBService dbService;
+@Autowired
+    public TestConfig(DBService dbService) {
+        this.dbService = dbService;
+    }
 
     @Bean
     public void instanciaBaseDeDados(){

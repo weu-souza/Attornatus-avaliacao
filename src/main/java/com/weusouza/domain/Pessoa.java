@@ -1,4 +1,4 @@
-package com.weusouza.Domain;
+package com.weusouza.domain;
 
 
 import javax.persistence.Entity;
