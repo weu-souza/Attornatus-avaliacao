@@ -51,4 +51,9 @@ public class EnderecoService {
         obj.setPessoa(pess);
         return repository.save(obj);
     }
+
+    public void delete(Integer id) {
+        Endereco obj = findById(id);
+        repository.delete(obj);
+    }
 }
