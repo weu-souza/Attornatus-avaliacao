@@ -1,6 +1,7 @@
 package com.weusouza.service;
 
 import com.weusouza.domain.Endereco;
+import com.weusouza.domain.Pessoa;
 import com.weusouza.repositories.EnderecoRepository;
 import com.weusouza.service.exeptions.ObjectNotFoundExeption;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,12 @@ public class EnderecoService {
         newObj.setCep(obj.getCep());
         newObj.setCidade(obj.getCidade());
         newObj.setNum(obj.getNum());
+    }
+
+    public Endereco create(Integer id_pess, Endereco obj) {
+        obj.setId(null);
+        Pessoa pess = pessoaService.findById(id_pess);
+        obj.setPessoa(pess);
+        return repository.save(obj);
     }
 }

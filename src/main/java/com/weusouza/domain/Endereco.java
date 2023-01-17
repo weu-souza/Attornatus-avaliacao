@@ -1,5 +1,7 @@
 package com.weusouza.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 @Entity
@@ -12,6 +14,7 @@ public class Endereco {
     private Integer cep;
     private Integer num;
     private String cidade;
+@JsonIgnore
 @ManyToOne
 @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
@@ -66,6 +69,14 @@ public class Endereco {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override

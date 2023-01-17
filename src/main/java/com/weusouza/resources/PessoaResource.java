@@ -2,14 +2,14 @@ package com.weusouza.resources;
 
 import com.weusouza.DTO.PessoaDto;
 import com.weusouza.domain.Pessoa;
-import com.weusouza.repositories.PessoaRepository;
+
 import com.weusouza.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.servlet.ServletRequest;
+
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +34,7 @@ public class PessoaResource {
     @GetMapping
     public ResponseEntity<List<PessoaDto>> findAll() {
         List<Pessoa> list = service.findAll();
-        List<PessoaDto> listDto = list.stream().map(obj -> new PessoaDto(obj)).collect(Collectors.toList());
+        List<PessoaDto> listDto = list.stream().map(PessoaDto::new).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDto);
     }
 
