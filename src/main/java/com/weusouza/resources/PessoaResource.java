@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,14 +40,14 @@ public class PessoaResource {
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> create(@RequestBody Pessoa obj) {
+    public ResponseEntity<Pessoa> create(@Valid @RequestBody Pessoa obj) {
         obj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<PessoaDto> update(@PathVariable Integer id, @RequestBody PessoaDto objDto) {
+    public ResponseEntity<PessoaDto> update(@Valid @PathVariable Integer id, @RequestBody PessoaDto objDto) {
         Pessoa newObj = service.update(id, objDto);
         return ResponseEntity.ok().body(new PessoaDto(newObj));
     }

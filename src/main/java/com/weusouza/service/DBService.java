@@ -20,8 +20,8 @@ public class DBService {
     }
 
     public void instanciaBaseDeDados(){
-        Pessoa p1 = new Pessoa(null,"weu", LocalDate.of(1997, 11, 27));
-        Pessoa p2 = new Pessoa(null,"sid", LocalDate.of(1999, 12, 28));
+        Pessoa p1 = new Pessoa(null,"antonio", LocalDate.of(1997, 11, 27));
+        Pessoa p2 = new Pessoa(null,"carlos", LocalDate.of(1999, 12, 28));
         Pessoa p3 = new Pessoa(null,"maria", LocalDate.of(1998, 10, 29));
         Pessoa p4 = new Pessoa(null,"jose", LocalDate.of(1998, 11, 20));
         Endereco e1 = new Endereco(null,"rua8",72815460,12,"brasilia",p1);

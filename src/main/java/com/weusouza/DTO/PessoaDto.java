@@ -1,12 +1,18 @@
 package com.weusouza.DTO;
 
 import com.weusouza.domain.Pessoa;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class PessoaDto {
     private Integer Id;
+    @NotEmpty(message = "campo NOME é requerido")
+    @Length(min= 3, max =100,message = "O campo nome deve ter entre 3 e 100 caracteres")
     private String nome;
+    @NotNull
     private LocalDate DataNascimento;
 
     public PessoaDto() {
